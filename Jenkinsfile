@@ -6,6 +6,7 @@ pipeline{
     }
     stages{
         stage("Build_War_Artifact"){
+            options { skipDefaultCheckout()}
             agent {label 'agent1'}
             steps{
                echo "Build War Artifact"
