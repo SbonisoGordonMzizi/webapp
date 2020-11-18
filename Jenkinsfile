@@ -18,4 +18,11 @@ pipeline{
              }
         }
     }
+    post{
+        always{
+         echo "i am going to do this everyday"   
+        }
+        success {
+          echo "well done everything is working"  
+        }
 }
