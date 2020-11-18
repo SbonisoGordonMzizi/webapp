@@ -16,7 +16,6 @@ pipeline{
             steps{
                echo "Stashed war artifact"
                 sh "ls -l"
-                stash name: 'war_file', include '**/target/*.war'
             }
         }
         stage("Build_docker_image"){
