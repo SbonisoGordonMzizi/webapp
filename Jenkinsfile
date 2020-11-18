@@ -7,11 +7,9 @@ pipeline{
         stage("Build_War_Artifact"){
             agent {label 'agent1'}
             steps{
-               sh ... 
+              
                echo "Build War Artifact"
                mvn -version
-               ... 
-               
             }
         }
         stage("Stashed_war_artifact"){ 
