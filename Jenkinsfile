@@ -13,18 +13,21 @@ pipeline{
         }
         stage("Stashed_war_artifact"){ 
             agent { label 'agent1'}
+            options { skipDefaultCheckout()}
             steps{
                echo "Stashed war artifact"
             }
         }
         stage("Build_docker_image"){
             agent { label 'agent2'} 
+            options { skipDefaultCheckout()}
              steps{
                  echo "Build docker image"
              }
         }
         stage("Stashed_docker_image"){
             agent { label 'agent2'}
+            options { skipDefaultCheckout()}
             steps{
                 echo "Stashed docker image"
             }  
