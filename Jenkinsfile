@@ -1,14 +1,17 @@
 pipeline{
-    agent { label 'agent1'}
-    environment{
-        NEW_VERSION = '1.3.0'
-        
+    agent none
+    tools {
+       maven 'Maven 3.6.3'   
     }
     stages{
         stage("Build_War_Artifact"){
             agent {label 'agent1'}
             steps{
+               sh ... 
                echo "Build War Artifact"
+               mvn -version
+               ... 
+               
             }
         }
         stage("Stashed_war_artifact"){ 
