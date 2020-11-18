@@ -1,12 +1,11 @@
 pipeline{
-    agent none
+    agent { label 'agent1'}
     environment{
         NEW_VERSION = '1.3.0'
         
     }
     stages{
         stage("Build_War_Artifact"){
-            options { skipDefaultCheckout()}
             agent {label 'agent1'}
             steps{
                echo "Build War Artifact"
