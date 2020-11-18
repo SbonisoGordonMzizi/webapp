@@ -25,4 +25,5 @@ pipeline{
         success {
           echo "well done everything is working"  
         }
+    }
 }
