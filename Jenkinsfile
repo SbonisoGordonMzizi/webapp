@@ -9,7 +9,7 @@ pipeline{
             steps{
               
                echo "Build War Artifact"
-               mvn -version
+               sh 'mvn -version'
             }
         }
         stage("Stashed_war_artifact"){ 
