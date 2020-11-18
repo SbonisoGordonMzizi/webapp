@@ -7,7 +7,7 @@ pipeline{
         stage("Build_War_Artifact"){
             agent {label 'agent1'}
             steps{
-               sh 'mvn clean test'
+               sh 'mvn clean package'
             }
         }
         stage("Stashed_war_artifact"){ 
@@ -15,6 +15,7 @@ pipeline{
             options { skipDefaultCheckout()}
             steps{
                echo "Stashed war artifact"
+                sh "ls -l"
             }
         }
         stage("Build_docker_image"){
