@@ -4,44 +4,67 @@ pipeline{
        maven 'Maven 3.6.3'   
     }
     stages{
-        stage("Build_War_Artifact"){
-            agent {label 'agent1'}
+        stage("Compile_Code"){
+            agent { label 'agent1'}
             steps{
-               sh 'mvn clean package'
+             sh 'mvn clear compile'   
             }
         }
-        stage("Stashed_war_artifact"){ 
+        stage("Test_Junit_test_cases"){
+            agent {label 'agent1'}
+            optins { skipDefaultChechout()}
+            steps{
+               sh 'mvn clear test'
+            }
+        }
+        stage("Build_war_artifact"){ 
             agent { label 'agent1'}
             options { skipDefaultCheckout()}
             steps{
-               echo "Stashed war artifact"
-                sh "ls -l"
+               sh 'mvn clear package'
             }
         }
-        stage("Build_docker_image"){
+        stage("Test_Selenium_test_cases"){
             agent { label 'agent2'} 
             options { skipDefaultCheckout()}
              steps{
-                 echo "Build docker image"
+                 echo "Selenium Testing"
              }
         }
-        stage("Stashed_docker_image"){
+        stage("Push_to_repo"){
             agent { label 'agent2'}
             options { skipDefaultCheckout()}
             steps{
-                echo "Stashed docker image"
+                echo "Push Artifact to repo"
             }  
         }
+        stage("Pull_Artifact_from_repo"){
+          agent { label 'agent2'}
+            options { skipDefaultCheckout()}
+            steps{
+                echo "Pull Artifact from repo"
+            }  
+        stage("Build_docker_image"){
+          agent { label 'agent2'}
+            options { skipDefaultCheckout()}
+            steps{
+                echo "Build docker Image"
+            }  
+        }
+        stage("Push_an_image_to_repo"){
+          agent { label 'agent2'}
+            options { skipDefaultCheckout()}
+            steps{
+                echo "Push An Image To Repo"
+            }  
+        }  
     }
     post{
         failure{
-         echo "failed failed pipeline"   
+          echo "send email to dev,Test,Ops Team"   
         }
         success {
-          echo "Everything went wll successful"  
-        }
-        unstable{
-           echo "Code is not developed well"   
+          echo "send email to dev,Test,Ops Team"
         }
     }
 }
