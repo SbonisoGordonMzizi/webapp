@@ -44,6 +44,7 @@ pipeline{
             steps{
                 echo "Pull Artifact from repo"
             }  
+        }
         stage("Build_docker_image"){
           agent { label 'agent2'}
             options { skipDefaultCheckout()}
