@@ -12,7 +12,7 @@ pipeline{
         }
         stage("Test_Junit_test_cases"){
             agent {label 'agent1'}
-            options { skipDefaultChechout()}
+            options { skipDefaultCheckout()}
             steps{
                sh 'mvn clear test'
             }
