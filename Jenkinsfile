@@ -62,10 +62,10 @@ pipeline{
     }
     post{
         failure{
-          echo "send email to dev,Test,Ops Team"   
+          echo "FAILED MESSAGE email it to dev,Test,Ops Team"   
         }
         success {
-          echo "send email to dev,Test,Ops Team"
+          echo "SUCCESS MESSAGE  email it to dev,Test,Ops Team"
         }
     }
 }
