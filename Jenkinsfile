@@ -7,21 +7,21 @@ pipeline{
         stage("Compile_Code"){
             agent { label 'agent1'}
             steps{
-             sh 'mvn clear compile'   
+             sh 'mvn clean compile'   
             }
         }
         stage("Test_Junit_test_cases"){
             agent {label 'agent1'}
             options { skipDefaultCheckout()}
             steps{
-               sh 'mvn clear test'
+               sh 'mvn clean test'
             }
         }
         stage("Build_war_artifact"){ 
             agent { label 'agent1'}
             options { skipDefaultCheckout()}
             steps{
-               sh 'mvn clear package'
+               sh 'mvn clean package'
             }
         }
         stage("Test_Selenium_test_cases"){
