@@ -29,7 +29,7 @@ pipeline{
             options { skipDefaultCheckout()}
              steps{
                  echo "Selenium Testing"
-                 sh "test.sh"
+                 sh "sleep 2m"
              }
         }
         stage("Push_to_repo"){
