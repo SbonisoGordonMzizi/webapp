@@ -36,7 +36,7 @@ pipeline{
             agent { label 'Artifact_agent'}
             options { skipDefaultCheckout()}
             steps{
-                echo "Push Artifact to repo"
+                sh "mvn clean install"
             }  
         }
         stage("Pull_Artifact_from_repo"){
