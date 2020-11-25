@@ -29,6 +29,7 @@ pipeline{
             options { skipDefaultCheckout()}
              steps{
                  echo "Selenium Testing"
+                 sh "test.sh"
              }
         }
         stage("Push_to_repo"){
