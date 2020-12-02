@@ -37,14 +37,15 @@ pipeline{
             options { skipDefaultCheckout()}
             steps{
                 echo "Build docker Image :$BUILD_NUMBER"
-                sh "docker build -t basicwebapp:1.0 ."
+                sh "docker build -t basicwebapp:$BUILD_NUMBER ."
             }  
         }
         stage("Deploy_Docker_Image_Staging"){
             options { skipDefaultCheckout()}
             steps{
                 echo "Deploy an docker image to pre-prod env"
-                sh "docker run --rm -d -p 3030:8080 --name webapp basicwebapp:1.0"
+                Container.stop
+                sh "docker run --rm -d -p 3030:8080 --name webapp basicwebapp:$BUILD_NUMBER"
             }  
         }  
     }
