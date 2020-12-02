@@ -36,7 +36,7 @@ pipeline{
         stage("Build_docker_image"){
             options { skipDefaultCheckout()}
             steps{
-                echo "Build docker Image"
+                echo "Build docker Image :$BUILD_NUMBER"
                 sh "docker build -t basicwebapp:1.0 ."
             }  
         }
