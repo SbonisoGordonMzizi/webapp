@@ -21,14 +21,7 @@ pipeline{
                sh 'mvn clean package'
             }
         }
-        stage("Test_Selenium_test_cases"){ 
-            options { skipDefaultCheckout()}
-             steps{
-                 echo "Selenium Testing"
-                 sh "sleep 2m"
-             }
-        }
-        stage("Push_to_repo"){
+        stage("Push_to_local_repo"){
          options { skipDefaultCheckout()}
             steps{
                 sh "mvn clean install"
@@ -44,12 +37,14 @@ pipeline{
             options { skipDefaultCheckout()}
             steps{
                 echo "Build docker Image"
+                sh "docker build -t basicwebapp:1.0 ."
             }  
         }
-        stage("Push_an_image_to_repo"){
+        stage("Deploy_Docker_Image_Staging"){
             options { skipDefaultCheckout()}
             steps{
-                echo "Push An Image To Repo"
+                echo "Deploy an docker image to pre-prod env"
+                sh "docker run --rm -d -p 3030:8080 --name webapp basicwebapp:1.0"
             }  
         }  
     }
