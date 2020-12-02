@@ -20,7 +20,8 @@
 </head>
 <body>
     <header class="header">
-    <h1>Hello JAVA world</h1>
+        <h1>Hello Java World</h1>
+        <h6>Sboniso Gordon Mzizi</h6>
     </header>
     <main>
         <h1 style="color:#29295f;"> Just Your First Name and Last Name Will Do!!</h1>
