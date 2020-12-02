@@ -44,7 +44,7 @@ pipeline{
             options { skipDefaultCheckout()}
             steps{
                 echo "Deploy an docker image to pre-prod env"
-                sh "docker run --rm -d -p 3030:8080 --name webapp_$BUILD_NUMBER basicwebapp:$BUILD_NUMBER"
+                sh "docker run --rm -d -p 30$BUILD_NUMBER:8080 --name webapp_$BUILD_NUMBER basicwebapp:$BUILD_NUMBER"
             }  
         }  
     }
